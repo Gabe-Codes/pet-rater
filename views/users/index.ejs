@@ -1,9 +1,19 @@
 <%- include('../partials/header') %>
 
-<nav>
-    <!-- <img src="/images/camera.svg"> -->
-    <h1><%= title %></h1>
-</nav>
-  <main>
 
-    <%- include('../partials/footer') %>
+<section class="container">
+    <div class="posts">
+        <a href="/main/new"><img src="/images/add-img.png"></a>
+    </div>
+	<% users.forEach(user => { %> <% if (user.pets.length) { %> <%
+	user.pets.forEach(p => { %>
+	<div class="posts">
+		<a href="/main/<%= p._id %>"
+			><img src="<%= p.image %>" />
+			<h1><%= p.pet %></h1></a
+		>
+	</div>
+	<% }); %> <% } %> <% }); %>
+</section>
+
+<%- include('../partials/footer') %>

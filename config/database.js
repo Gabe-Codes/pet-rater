@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 
-mongoose.connect('mongodb://localhost/mongoose-users', {
+mongoose.connect(process.env.DATABASE_URL, {
 	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
+	useCreateIndex: true
 });
 
 db.on('connected', () => {

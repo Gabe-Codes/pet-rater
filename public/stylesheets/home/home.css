@@ -1,3 +1,71 @@
-body {
-    background-color: yellow;
+#guest {
+	grid-area: guest;
+	visibility: hidden;
+	background-color: #6eb19e;
+	float: right;
+	width: 8.8%;
+	font-size: 17px;
+	text-align: center;
+}
+
+.main-content {
+	grid-area: main;
+	display: grid;
+	grid-template-areas: 'desc images';
+	grid-template-columns: 1fr 1fr;
+}
+
+section > a,
+section > p {
+	color: white;
+	text-decoration: none;
+}
+
+section > a:hover {
+	text-decoration: underline;
+}
+
+.desc {
+	grid-area: desc;
+	text-align: center;
+	padding: 30px 40px 0px 40px;
+	color: white;
+	font-size: 26px;
+}
+
+.desc > h2,
+.desc > h4 {
+	font-weight: bold;
+}
+
+.desc > h2 {
+	text-decoration: underline;
+}
+
+.desc > h4 {
+	padding: 10px 0px 30px;
+}
+
+.desc > p {
+	padding-bottom: 20px;
+}
+
+.images {
+	grid-area: images;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.img {
+	padding-top: 3%;
+	width: 65%;
+	height: auto;
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+    .desc {
+        font-size: 19px;
+    }
 }

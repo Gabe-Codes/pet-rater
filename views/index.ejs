@@ -1,9 +1,32 @@
 <%- include('partials/header') %>
 
-<nav>
-    <!-- <img src="/images/camera.svg"> -->
-    <h1><%= title %></h1>
-</nav>
-  <main>
+<section id="guest">
+	<p>or</p>
+	<a href="/main">continue<br />as<br />guest</a>
+</section>
+<div class="main-content">
+	<section class="desc">
+		<h2>Welcome to Pet Rater!</h2>
+		<h4>
+			We are a web based appliction thats primary objective is to give people a
+			feel for how cute their pet really is!
+		</h4>
+		<p>
+			Have you ever wanted to know if your guests where just being polite by
+			calling your pet cute, then just add a pet to your profile and wait as the
+			judments come pouring in.
+		</p>
+		<p>
+			Think you have a keen eye for cuteness or do you just want to scroll
+			through other peoples pets and see the competition, then sign up now and
+			get to judging!
+		</p>
+  </section>
+  <section class="images">
+    <img class="img" src="/images/main-example.png">
+    <img class="img" src="/images/post-example.png">
+  </section>
+</div>
 
-    <%- include('partials/footer') %>
+
+<%- include('partials/footer') %>

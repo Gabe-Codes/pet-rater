@@ -9,7 +9,26 @@
 		<link rel="stylesheet" href="/stylesheets/home/home.css" />
 		<% } %> <% if (title === 'Pet Rater') { %>
 		<link rel="stylesheet" href="/stylesheets/main/main.css" />
+		<% } %> <% if (title === 'New Pet') { %>
+		<link rel="stylesheet" href="/stylesheets/new/new.css" />
+		<% } %> <% if (title === 'Pet Profile') { %>
+		<link rel="stylesheet" href="/stylesheets/show/show.css" />
 		<% } %>
+		<script defer src="/javascripts/script.js"></script>
 		<title><%= title %></title>
 	</head>
 	<body>
+		<nav>
+			<section>
+				<img id="logo" src="/images/pet-rater-logo.png" />
+			</section>
+			<div>
+				<a class="title" href="/main">Pet Rater</a>
+			</div>
+			<% if (user) { %>
+			<a class="log" href="/logout">Log Out</a>
+			<% } else { %>
+			<a class="log" id="login" href="/auth/google">Login</a>
+			<% } %>
+		</nav>
+		<main>

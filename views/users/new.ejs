@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+
+<form action="/main" method="POST">
+    <label>Pet Name: <input type="text" name="pet"/></label><br />
+    <label>Pet Description: <textarea name="description"></textarea></label><br />
+    <label>Imgur Url: <input type="text" name="image"/></label><br />
+    <input type="submit" value="Add Pet" />
+</form>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,31 @@
+.profile {
+	display: grid;
+	grid-template-areas:
+		'img info'
+        'write comments';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content auto;
+}
+
+.post {
+    grid-area: img;
+	display: flex;
+	position: relative;
+	max-width: 300px;
+	max-height: 300px;
+	border: 3px solid black;
+}
+
+.post > a > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+.info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
