@@ -2,30 +2,32 @@
 
 <section class="profile">
 	<div class="post">
-		<div><img src="<%= pet.image %>" /></div>
+        <div><img src="<%= pet.image %>" /><h1 id="avg"></h1></div>
 	</div>
 	<h1 class="name"><%= pet.pet %></h1>
 	<h1 class="desc"><%= pet.description %></h1>
 	<h3 class="owner"><%= pet.owner %>'s pet</h3>
 	<section class="write">
 		<h2>Comment</h2>
-		<form
-			id="add-review-form"
-			method="POST"
-			action="/main/<%= pet._id %>/comments"
-		>
-			<label>Rating:</label>
-			<select name="rating">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-			<label>Comment:</label>
-			<textarea name="comment"></textarea>
-			<input type="submit" value="Comment" />
-		</form>
+		<div>
+			<form
+				id="add-review-form"
+				method="POST"
+				action="/main/<%= pet._id %>/comments"
+			>
+				<label>Rating:</label>
+				<select name="rating">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option> </select
+				><br />
+				<label>Comment:</label><br />
+				<textarea name="comment"></textarea>
+				<input type="submit" value="Comment" />
+			</form>
+		</div>
 	</section>
 
 	<section class="comments">
@@ -47,13 +49,13 @@
 					<td><%= r.name %></td>
 					<td><%= r.rating %></td>
 					<td><%= r.comment %></td>
-				</tr>
-				<% }); %>
+                </tr>
+                <% }); %>
 			</tbody>
 		</table>
 		<% } else { %>
-		<h5>No Ratings or Comments Yet</h5>
-		<% } %>
+            <h5>No Ratings or Comments Yet</h5>
+            <% } %>
 	</section>
 </section>
 

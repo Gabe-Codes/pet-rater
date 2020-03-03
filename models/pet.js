@@ -8,7 +8,7 @@ const commentSchema = new Schema(
 			type: Number,
 			required: true,
 			min: 1,
-			max: 5
+            max: 5
 		},
 		comment: {
 			type: String
@@ -43,7 +43,8 @@ const petSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
+    averageRating: Number
 });
 
 module.exports = mongoose.model('Pet', petSchema);

@@ -23,12 +23,7 @@ function create(req, res) {
 }
 
 function show(req, res) {
-	Pet.findById(req.params.id)
-		.populate({
-			path: 'comments.postedBy'
-		})
-		.lean()
-		.exec((err, pet) => {
+	Pet.findById(req.params.id, (err, pet) => {
 			res.render('users/show', {
 				title: 'Pet Profile',
 				pet,
