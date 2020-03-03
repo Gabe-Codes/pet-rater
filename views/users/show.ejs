@@ -1,13 +1,13 @@
 <%- include('../partials/header') %>
 
 <section class="profile">
-    <% console.log(user) %>
+    <% console.log(pet) %>
 	<div class="post">
 		<div><img src="<%= pet.image %>" /></div>
 	</div>
 	<h1 class="name"><%= pet.pet %></h1>
 	<h1 class="desc"><%= pet.description %></h1>
-	<h3 class="owner"><%= user.name %></h3>
+	<h3 class="owner"><%= pet.user %></h3>
 </section>
 
 <%- include('../partials/footer') %>

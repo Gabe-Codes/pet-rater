@@ -3,7 +3,7 @@ const Pet = require('../models/pet');
 
 module.exports = {
 	index,
-	show
+	// show
 };
 
 function index(req, res) {
@@ -28,14 +28,4 @@ function index(req, res) {
 		});
 }
 
-function show(req, res) {
-	Pet.findById(req.params.id, (err, pet) => {
-		User.find({ pet: pet._id }, function(err, user) {
-			res.render('users/show', {
-				title: 'Pet Profile',
-				pet,
-				user: req.user
-			});
-		});
-	});
-}
+
