@@ -1,15 +1,21 @@
-const User = require('../models/user');
+const Pet = require('../models/pet');
 
 module.exports = {
-	create
+	create,
+	new: newPet
 };
 
 function create(req, res) {
-        const user = req.user;
-		user.pets.push(req.body);
-		user.save(err => {
-			if (err) return res.redirect('main/new');
-			res.redirect('/main');
-		});
+	const pet = { ...req.body, user: req.params.id };
+	Pet.create(pet, err => {
+		if (err) return res.redirect('main/new');
+		res.redirect('/main');
+	});
 }
 
+function newPet(req, res) {
+	res.render('users/new', {
+		title: 'New Pet',
+		user: req.params.id
+	});
+}

@@ -1,14 +1,13 @@
 <%- include('../partials/header') %>
 
-<section class="porfile">
-    <% user.pets.forEach(p => { %>
-        <div class="post">
-            <a href="/main/<%= p._id %>"><img src="<%= p.image %>"/></a>
-        </div>
-        <h1 class="info"><%= p.pet %></h1>
-        <h1 class="info"><%= p.description %></h1>
-        <% }); %>
-        <h2 class="info"><%= user.name %></h2>
+<section class="profile">
+    <% console.log(user) %>
+	<div class="post">
+		<div><img src="<%= pet.image %>" /></div>
+	</div>
+	<h1 class="name"><%= pet.pet %></h1>
+	<h1 class="desc"><%= pet.description %></h1>
+	<h3 class="owner"><%= user.name %></h3>
 </section>
 
 <%- include('../partials/footer') %>

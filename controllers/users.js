@@ -1,8 +1,8 @@
 const User = require('../models/user');
+const Pet = require('../models/pet');
 
 module.exports = {
 	index,
-	new: newPet,
 	show
 };
 
@@ -14,29 +14,28 @@ function index(req, res) {
 	User.find(modelQuery)
 		.sort(sortKey)
 		.exec((err, users) => {
-			if (err) return next(err);
-			res.render('users/index', {
-				title: 'Pet Rater',
-				users,
-				user: req.user,
-				name: req.query.name,
-				sortKey
+			Pet.find({}, (err, pets) => {
+				if (err) return next(err);
+				res.render('users/index', {
+					title: 'Pet Rater',
+					users,
+					user: req.user,
+					name: req.query.name,
+					sortKey,
+					pets
+				});
 			});
 		});
 }
 
-function newPet(req, res) {
-	res.render('users/new', {
-		title: 'New Pet',
-		user: req.user
-	});
-}
-
 function show(req, res) {
-	User.findById(req.params.id, (err, user) => {
-		res.render('users/show', {
-			title: 'Pet Profile',
-			user:req.user
+	Pet.findById(req.params.id, (err, pet) => {
+		User.find({ pet: pet._id }, function(err, user) {
+			res.render('users/show', {
+				title: 'Pet Profile',
+				pet,
+				user: req.user
+			});
 		});
 	});
 }

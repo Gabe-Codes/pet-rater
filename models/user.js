@@ -1,22 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const petSchema = new Schema({
-	pet: {
-		type: String,
-		required: true
-	},
-	description: {
-		type: String,
-		required: true
-	},
-	image: {
-		type: String,
-		required: true
-	}
-});
-
-const commentSchema = new Schema (
+const commentSchema = new Schema(
 	{
 		name: String,
 		rating: {
@@ -26,7 +11,7 @@ const commentSchema = new Schema (
 			max: 5
 		},
 		comment: {
-			type: String,
+			type: String
 		}
 	},
 	{
@@ -36,8 +21,11 @@ const commentSchema = new Schema (
 
 const postSchema = new Schema(
 	{
-		pets: [petSchema],
-		comments: [commentSchema],
+		pets: {
+			type: Schema.Types.ObjectId,
+			ref: 'Pet'
+		},
+		comments: [commentSchema]
 		// id: Schema.Types.ObjectId
 	},
 	{
@@ -50,7 +38,10 @@ const userSchema = new Schema(
 		name: String,
 		email: String,
 		googleId: String,
-		pets: [petSchema],
+		pets: {
+			type: Schema.Types.ObjectId,
+			ref: 'Pet'
+		},
 		posts: [postSchema]
 	},
 	{
