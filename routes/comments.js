@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const commentsCtrl = require('../controllers/comments')
+const commentsCtrl = require('../controllers/comments');
 
 router.post('/main/:id/comments', isLoggedIn, commentsCtrl.create);
 
