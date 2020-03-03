@@ -1,13 +1,60 @@
 <%- include('../partials/header') %>
 
 <section class="profile">
-    <% console.log(pet) %>
 	<div class="post">
 		<div><img src="<%= pet.image %>" /></div>
 	</div>
 	<h1 class="name"><%= pet.pet %></h1>
 	<h1 class="desc"><%= pet.description %></h1>
-	<h3 class="owner"><%= pet.user %></h3>
+	<h3 class="owner"><%= pet.owner %>'s pet</h3>
+	<section class="write">
+		<h2>Comment</h2>
+		<form
+			id="add-review-form"
+			method="POST"
+			action="/main/<%= pet._id %>/comments"
+		>
+			<label>Rating:</label>
+			<select name="rating">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<label>Comment:</label>
+			<textarea name="comment"></textarea>
+			<input type="submit" value="Comment" />
+		</form>
+	</section>
+
+	<section class="comments">
+        <h2>Comments</h2>
+		<% if (pet.comments.length) { %>
+		<table>
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>By</th>
+					<th>Rating</th>
+					<th>Comment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% pet.comments.forEach(function(r) { %>
+				<tr>
+					<td><%= r.createdAt.toLocaleDateString() %></td>
+					<td><%= r.name %></td>
+					<td><%= r.rating %></td>
+					<td><%= r.comment %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<% } else { %>
+		<h5>No Ratings or Comments Yet</h5>
+		<% } %>
+	</section>
 </section>
 
 <%- include('../partials/footer') %>

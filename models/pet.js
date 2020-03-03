@@ -12,7 +12,11 @@ const commentSchema = new Schema(
 		},
 		comment: {
 			type: String
-		}
+        },
+        postedBy:{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
 	},
 	{
 		timestamps: true
@@ -31,6 +35,9 @@ const petSchema = new Schema({
 	image: {
 		type: String,
 		required: true
+    },
+    owner: {
+        type: String
     },
     postedBy: {
         type: Schema.Types.ObjectId,

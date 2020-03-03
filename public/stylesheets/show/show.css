@@ -54,3 +54,11 @@
     font-size: 26px;
     padding: 10px 40px;
 }
+
+.write {
+    grid-area: write;
+}
+
+.comments {
+    grid-area: comments;
+}
