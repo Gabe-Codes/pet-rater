@@ -4,11 +4,12 @@ module.exports = {
 	new: newPet,
 	create,
 	show,
+	delete: deletePet,
 	comment
 };
 
 function newPet(req, res) {
-	res.render('users/new', {
+	res.render('pets/new', {
 		title: 'New Pet',
 		user: req.user
 	});
@@ -24,12 +25,19 @@ function create(req, res) {
 
 function show(req, res) {
 	Pet.findById(req.params.id, (err, pet) => {
-			res.render('users/show', {
-				title: 'Pet Profile',
-				pet,
-				user: req.user
-			});
+		res.render('pets/show', {
+			title: 'Pet Profile',
+			pet,
+			user: req.user
 		});
+	});
+}
+
+function deletePet(req, res) {
+	Pet.findById(req.params.id, (err, pet) => {
+		pet.delete();
+		res.redirect(`/main`);
+	});
 }
 
 function comment(req, res) {}

@@ -77,6 +77,10 @@
     justify-content: center;
 }
 
+.write > textarea {
+    
+}
+
 .comments > table {
     margin: 0 auto;
 }
@@ -88,4 +92,18 @@ th {
 
 td {
     text-align: center;
+}
+
+.avg {
+    position: absolute;
+    left: 36%;
+    top: 11%;
+    font-size: 40px;
+}
+
+@media (min-width: 1500px) {
+    .avg {
+        left: 28%;
+        top: 11%;
+    }
 }

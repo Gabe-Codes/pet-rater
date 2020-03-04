@@ -1,0 +1,83 @@
+<%- include('../partials/header') %>
+
+<section class="profile">
+	<div class="post">
+		<div><img src="<%= pet.image %>" /></div>
+	</div>
+	<h1 class="name"><%= pet.pet %></h1>
+	<h1 class="desc"><%= pet.description %></h1>
+	<h3 class="owner"><%= pet.owner %>'s pet</h3>
+	<section class="write">
+		<h2>Comment</h2>
+		<div>
+			<form
+				id="add-review-form"
+				method="POST"
+				action="/main/<%= pet._id %>/comments"
+			>
+				<label>Rating:</label>
+				<select name="rating">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option> </select
+				><br />
+				<label>Comment:</label><br />
+				<textarea
+					placeholder="You only get one comment and rating, however you may edit your comment and rating later"
+					name="comment"
+				></textarea>
+				<input type="submit" value="Comment" />
+			</form>
+		</div>
+	</section>
+
+	<section class="comments">
+		<h2>Comments</h2>
+		<% if (pet.comments.length) { %>
+		<table>
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>By</th>
+					<th>Rating</th>
+					<th>Comment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% let total = 0 %> <% pet.comments.forEach(function(c) { %> <% total
+				+=c.rating %>
+				<tr>
+					<td><%= c.createdAt.toLocaleDateString() %></td>
+					<td><%= c.name %></td>
+					<td><%= c.rating %> <form action="/comments/<%= c._id %>?_method=PUT" method="POST"></form><select name="rating" value="<%= c.rating %>">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option> </select
+					><button type="submit">UPDATE Rating</button>
+				</form></td>
+					<td><%= c.comment %> <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+						<textarea name="comment" value="<%= c.comment %>"></textarea>
+								<button type="submit">UPDATE COMMENT</button>
+							  </form></td>
+					<td><form
+						action="/comments/<%= c._id %>?_method=DELETE"
+						method="POST"
+					>
+						<button type="submit">X</button>
+					</form>
+				</tr></td>
+				<% }); %>
+			</tbody>
+		</table>
+		<h1 class="avg">Rating: <%= (total / pet.comments.length).toFixed(1) %></h1>
+		<% } else { %>
+		<h5>No Ratings or Comments Yet</h5>
+		<% } %>
+	</section>
+</section>
+
+<%- include('../partials/footer') %>

@@ -16,7 +16,8 @@ const commentSchema = new Schema(
         postedBy:{
             type: Schema.Types.ObjectId,
             ref: 'User'
-        }
+        },
+        googleId: String
 	},
 	{
 		timestamps: true
@@ -34,7 +35,8 @@ const petSchema = new Schema({
 	},
 	image: {
 		type: String,
-		required: true
+        required: true,
+        unique: true
     },
     owner: {
         type: String
@@ -44,7 +46,11 @@ const petSchema = new Schema({
         ref: 'User'
     },
     comments: [commentSchema],
-    averageRating: Number
 });
+
+petSchema.path('image').validate((val) => {
+    urlRegex = /https:\/\/i.imgur.com\/(?:.*)/;
+    return urlRegex.test(val);
+}, 'Invalid URL.');
 
 module.exports = mongoose.model('Pet', petSchema);

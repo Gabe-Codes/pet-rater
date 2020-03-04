@@ -1,12 +1,14 @@
 <%- include('../partials/header') %>
 
-
 <section class="container">
-    <div class="posts">
-        <a href="/main/new"><img src="/images/add-img.png"></a>
-    </div>
+	<div class="posts">
+		<a href="/main/new"><img src="/images/add-img.png"/></a>
+	</div>
 	<% pets.forEach(p => { %>
 	<div class="posts">
+		<form action="/main/<%= p._id %>?_method=DELETE" method="POST">
+			<button type="submit">X</button>
+		</form>
 		<a href="/main/<%= p._id %>"
 			><img src="<%= p.image %>" />
 			<h1><%= p.pet %></h1></a
