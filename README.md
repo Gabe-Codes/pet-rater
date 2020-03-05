@@ -24,8 +24,8 @@ An app for rating other peoples pets or uploading your own pet and having it rat
 - Google Oauth
 
 ## Getting Started
--https://pet-rater.herokuapp.com/
--https://trello.com/b/aTfWnbbf/pet-rater
+- https://pet-rater.herokuapp.com/
+- https://trello.com/b/aTfWnbbf/pet-rater
 
 ## Next Steps
 - Allow users to sort the main page by rating, alphabetical, etc.
