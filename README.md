@@ -5,13 +5,13 @@ An app for rating other peoples pets or uploading your own pet and having it rat
 
 ## Screenshots
 ### Landing Page
-![Sketch](public/images/landing.png)
+![Landing](public/images/landing.png)
 
 ### Main Page
-![Sketch](public/images/main.png)
+![Main](public/images/main.png)
 
 ### Profile Page
-![Sketch](public/images/profile.png)
+![Profile](public/images/profile.png)
 
 ## Technologies Used
 - JavaScript
@@ -24,8 +24,8 @@ An app for rating other peoples pets or uploading your own pet and having it rat
 - Google Oauth
 
 ## Getting Started
-- https://pet-rater.herokuapp.com/
-- https://trello.com/b/aTfWnbbf/pet-rater
+- [Pet Rater](https://pet-rater.herokuapp.com/)
+- [Trello Board](https://trello.com/b/aTfWnbbf/pet-rater)
 
 ## Next Steps
 - Allow users to sort the main page by rating, alphabetical, etc.
