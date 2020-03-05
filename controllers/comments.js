@@ -32,9 +32,12 @@ function deleteComment(req, res) {
 function update(req, res) {
 	Pet.findOne({ 'comments._id': req.params.id }, (err, pet) => {
         const comment = pet.comments.id(req.params.id);
-		comment.comment = req.body.comment;
+        console.log(req.body.comment, 'comment: ', comment.comment);
+        comment.comment = req.body.comment;
 		comment.rating = req.body.rating;
+        console.log(comment)
 		pet.save(err => {
+            console.log(err)
 			res.redirect(`/main/${pet._id}`);
 		});
 	});

@@ -60,6 +60,12 @@
 	font-size: 20px;
 }
 
+.write > div > form > textarea {
+    resize: none;
+    width: 200px;
+    height: 60px;
+}
+
 .comments {
 	grid-area: comments;
 	font-size: 20px;
@@ -72,38 +78,73 @@
 	text-decoration: underline;
 }
 
-.write > div, .comments > h5 {
-    display: flex;
-    justify-content: center;
-}
-
-.write > textarea {
-    
+.write > div,
+.comments > h5 {
+	display: flex;
+	justify-content: center;
 }
 
 .comments > table {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 th {
-    text-decoration: underline;
-    padding: 0px 20px;
+	text-decoration: underline;
+	padding: 0px 20px;
 }
 
 td {
-    text-align: center;
+	text-align: center;
+}
+
+.delete {
+	display: flex;
+	justify-content: center;
+}
+
+.deleteBtn {
+	background-color: red;
+	color: white;
+	border: none;
+	border-radius: 20%;
+}
+
+.deleteBtn:hover {
+    background-color: coral;
+}
+
+.update {
+    display: flex;
+	align-items: center;
+}
+
+.update > textarea {
+    resize: none;
+    width: 160px;
+    height: 46px;
+    margin-left: 10px;
+}
+
+.update > button {
+    margin-left: 10px;
 }
 
 .avg {
-    position: absolute;
-    left: 36%;
-    top: 11%;
-    font-size: 40px;
+	position: absolute;
+	left: 36%;
+	top: 11%;
+	font-size: 40px;
+}
+
+form > button:hover {
+    border-radius: 10%;
+    border-color: black;
 }
 
 @media (min-width: 1500px) {
-    .avg {
-        left: 28%;
-        top: 11%;
-    }
+	.avg {
+		left: 28%;
+		top: 11%;
+	}
 }
+

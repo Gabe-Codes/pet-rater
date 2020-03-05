@@ -16,7 +16,7 @@ function newPet(req, res) {
 }
 
 function create(req, res) {
-	const pet = { ...req.body, postedBy: req.user, owner: req.user.name };
+	const pet = { ...req.body, postedBy: req.user, owner: req.user.name, googleId: req.user.googleId };
 	Pet.create(pet, err => {
 		if (err) return res.redirect('main/new');
 		res.redirect('/main');
@@ -25,10 +25,13 @@ function create(req, res) {
 
 function show(req, res) {
 	Pet.findById(req.params.id, (err, pet) => {
+		let guest = false;
+		if (typeof req.user === 'undefined') guest = true;
 		res.render('pets/show', {
 			title: 'Pet Profile',
 			pet,
-			user: req.user
+			user: req.user,
+			guest
 		});
 	});
 }

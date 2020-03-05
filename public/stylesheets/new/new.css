@@ -1,0 +1,32 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+form {
+    margin-top: 2%;
+   font-size: 30px;
+}
+
+textarea {
+    width: 200px;
+    height: 90px;
+}
+
+input[type="text"] {
+    width: 200px;
+    height: 30px;
+}
+
+form > button {
+    margin-top: 8%;
+    font-size: 15px;
+    border-radius: 10%;
+    float: right;
+}
+
+form > button:hover {
+    border-color: black;
+}

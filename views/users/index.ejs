@@ -6,13 +6,20 @@
 	</div>
 	<% pets.forEach(p => { %>
 	<div class="posts">
-		<form action="/main/<%= p._id %>?_method=DELETE" method="POST">
-			<button type="submit">X</button>
-		</form>
-		<a href="/main/<%= p._id %>"
-			><img src="<%= p.image %>" />
-			<h1><%= p.pet %></h1></a
+		<% if (guest === false) { %> <% if (user.googleId === p.googleId) { %>
+		<form
+			class="delete"
+			action="/main/<%= p._id %>?_method=DELETE"
+			method="POST"
 		>
+			<button class="deleteBtn" type="submit">X</button>
+		</form>
+		<% } %> <% } %>
+        <a href="/main/<%= p._id %>"><img src="<%= p.image %>" /></a>
+        <div>
+            <a href="/main/<%= p._id %>"><h1><%= p.pet %></h1></a>
+        </div>
+        
 	</div>
 	<% }); %>
 </section>

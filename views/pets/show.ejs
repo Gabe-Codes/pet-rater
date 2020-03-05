@@ -8,6 +8,8 @@
 	<h1 class="desc"><%= pet.description %></h1>
 	<h3 class="owner"><%= pet.owner %>'s pet</h3>
 	<section class="write">
+		<% if (guest === false) { %>
+			<% if (user.googleId !== pet.googleId) { %>
 		<h2>Comment</h2>
 		<div>
 			<form
@@ -28,9 +30,10 @@
 					placeholder="You only get one comment and rating, however you may edit your comment and rating later"
 					name="comment"
 				></textarea>
-				<input type="submit" value="Comment" />
+				<button type="submit">Comment</button>
 			</form>
 		</div>
+		<% } %> <% } %>
 	</section>
 
 	<section class="comments">
@@ -39,6 +42,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th></th>
 					<th>Date</th>
 					<th>By</th>
 					<th>Rating</th>
@@ -49,27 +53,43 @@
 				<% let total = 0 %> <% pet.comments.forEach(function(c) { %> <% total
 				+=c.rating %>
 				<tr>
+					<td>
+						<% if (guest === false) { %> <% if (user.googleId === c.googleId) {
+						%>
+						<form
+							class="delete"
+							action="/comments/<%= c._id %>?_method=DELETE"
+							method="POST"
+						>
+							<button class="deleteBtn" type="submit">X</button>
+						</form>
+						<% } %> <% } %>
+					</td>
 					<td><%= c.createdAt.toLocaleDateString() %></td>
 					<td><%= c.name %></td>
-					<td><%= c.rating %> <form action="/comments/<%= c._id %>?_method=PUT" method="POST"></form><select name="rating" value="<%= c.rating %>">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option> </select
-					><button type="submit">UPDATE Rating</button>
-				</form></td>
-					<td><%= c.comment %> <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
-						<textarea name="comment" value="<%= c.comment %>"></textarea>
-								<button type="submit">UPDATE COMMENT</button>
-							  </form></td>
-					<td><form
-						action="/comments/<%= c._id %>?_method=DELETE"
-						method="POST"
-					>
-						<button type="submit">X</button>
-					</form>
-				</tr></td>
+					<td><%= c.rating %></td>
+					<td><%= c.comment %></td>
+					<td>
+						<% if (guest === false) { %> <% if (user.googleId === c.googleId) {
+						%>
+						<form
+							class="update"
+							action="/comments/<%= c._id %>?_method=PUT"
+							method="POST"
+						>
+							<select name="rating" value="<%= c.rating %>">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option> </select
+							><br />
+							<textarea name="comment" value="<%= c.comment %>"></textarea>
+							<button type="submit">Update</button>
+						</form>
+						<% } %> <% } %>
+					</td>
+				</tr>
 				<% }); %>
 			</tbody>
 		</table>

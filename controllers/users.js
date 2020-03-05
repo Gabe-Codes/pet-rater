@@ -11,6 +11,8 @@ function index(req, res) {
 		? { name: new RegExp(req.query.name, 'i') }
 		: {};
 	let sortKey = req.query.sort || 'name';
+	let guest = false;
+	if (typeof req.user === 'undefined') guest = true;
 	User.find(modelQuery)
 		.sort(sortKey)
 		.exec((err, users) => {
@@ -22,6 +24,7 @@ function index(req, res) {
 					user: req.user,
 					name: req.query.name,
 					sortKey,
+					guest,
 					pets
 				});
 			});

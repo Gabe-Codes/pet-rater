@@ -46,6 +46,7 @@ const petSchema = new Schema({
         ref: 'User'
     },
     comments: [commentSchema],
+    googleId: String
 });
 
 petSchema.path('image').validate((val) => {
