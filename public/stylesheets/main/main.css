@@ -38,6 +38,7 @@
 }
 
 .deleteBtn:hover {
+    cursor: pointer;
     background-color: coral;
 }
 

@@ -112,6 +112,7 @@ td {
 }
 
 .deleteBtn:hover {
+    cursor: pointer;
     background-color: coral;
 }
 
@@ -139,11 +140,13 @@ td {
 }
 
 form > button:hover {
+    cursor: pointer;
     border-radius: 10%;
     border-color: black;
 }
 
 #editToggle {
+    cursor: pointer;
     background-color: orange;
     color: white;
 	border: none;
