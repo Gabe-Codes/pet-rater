@@ -24,13 +24,22 @@ function create(req, res) {
 }
 
 function show(req, res) {
+	let commentIds = [];
+	let commented = false;
 	Pet.findById(req.params.id, (err, pet) => {
 		let guest = false;
 		if (typeof req.user === 'undefined') guest = true;
+		if (pet.comments.length > 0) {
+			pet.comments.forEach(c => {
+                commentIds.push(c.googleId);
+            });
+			if (guest === false && commentIds.includes(req.user.googleId)) commented = true;
+		}
 		res.render('pets/show', {
 			title: 'Pet Profile',
 			pet,
 			user: req.user,
+			commented,
 			guest
 		});
 	});

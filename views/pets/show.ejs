@@ -9,7 +9,7 @@
 	<h3 class="owner"><%= pet.owner %>'s pet</h3>
 	<section class="write">
 		<% if (guest === false) { %>
-			<% if (user.googleId !== pet.googleId) { %>
+			<% if (user.googleId !== pet.googleId && commented === false) { %>
 		<h2>Comment</h2>
 		<div>
 			<form
