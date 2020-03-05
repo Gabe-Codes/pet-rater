@@ -63,13 +63,14 @@
 						>
 							<button class="deleteBtn" type="submit">X</button>
 						</form>
+						<button id="editToggle">✎</button>
 						<% } %> <% } %>
 					</td>
 					<td><%= c.createdAt.toLocaleDateString() %></td>
 					<td><%= c.name %></td>
 					<td><%= c.rating %></td>
 					<td><%= c.comment %></td>
-					<td>
+					<td id="edit">
 						<% if (guest === false) { %> <% if (user.googleId === c.googleId) {
 						%>
 						<form

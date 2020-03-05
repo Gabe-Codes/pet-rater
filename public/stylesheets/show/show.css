@@ -141,6 +141,17 @@ form > button:hover {
     border-color: black;
 }
 
+#editToggle {
+    background-color: orange;
+    color: white;
+	border: none;
+    border-radius: 20%;
+}
+
+#editToggle:hover {
+    background-color: #F6C27B;
+}
+
 @media (min-width: 1500px) {
 	.avg {
 		left: 28%;
