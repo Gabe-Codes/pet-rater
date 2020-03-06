@@ -1,8 +1,12 @@
-const editToggle = document.getElementById('editToggle');
-const edit = document.getElementById('edit');
-edit.style.display = 'none';
+const toggleBtn = document.getElementById('editToggle');
+const form = document.getElementById('edit');
 
-editToggle.addEventListener('click', e => {
-	if (edit.style.display === 'none') edit.style.display = 'block';
-	else edit.style.display = 'none';
-});
+form.style.display = 'none';
+
+toggleBtn &&
+	toggleBtn.addEventListener('click', e => {
+		console.log(form)
+		if (form.style.display === 'none') {
+			form.style.display = 'block';
+		} else form.style.display = 'none';
+	});

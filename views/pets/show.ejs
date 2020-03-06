@@ -8,8 +8,8 @@
 	<h1 class="desc"><%= pet.description %></h1>
 	<h3 class="owner"><%= pet.owner %>'s pet</h3>
 	<section class="write">
-		<% if (guest === false) { %>
-			<% if (user.googleId !== pet.googleId && commented === false) { %>
+		<% if (guest === false) { %> <% if (user.googleId !== pet.googleId &&
+		commented === false) { %>
 		<h2>Comment</h2>
 		<div>
 			<form
@@ -63,16 +63,16 @@
 						>
 							<button class="deleteBtn" type="submit">X</button>
 						</form>
-						<button id="editToggle">✎</button>
+						<button id="editToggle" data-toggle="<%= c._id %>">✎</button>
 						<% } %> <% } %>
 					</td>
 					<td><%= c.createdAt.toLocaleDateString() %></td>
 					<td><%= c.name %></td>
 					<td><%= c.rating %></td>
 					<td><%= c.comment %></td>
-					<td id="edit">
-						<% if (guest === false) { %> <% if (user.googleId === c.googleId) {
+					<% if (guest === false) { %> <% if (user.googleId === c.googleId) {
 						%>
+					<td id="edit" data-edit="<%= c._id %>">
 						<form
 							class="update"
 							action="/comments/<%= c._id %>?_method=PUT"
